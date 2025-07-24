@@ -1,0 +1,37 @@
+int ledpins[] = {2,3,4,5,6};
+int ledpinNum = 5; 
+int photo = A0;
+int threshold = 30;
+int sensor;
+
+void setup() {
+  Serial.begin(9600);
+for(int i = 0; i < ledpinNum; i++){
+  pinMode(ledpins[i], OUTPUT);
+}
+}
+
+void loop() {
+  sensor = analogRead(photo);
+  Serial.println(sensor);
+  if(sensor > threshold){
+    ledDisplay();
+
+    
+  }
+else {
+
+}
+}
+
+void ledDisplay(){
+for(int i = 0; i < ledpinNum; i++){
+  digitalWrite(ledpins[i], HIGH);
+  delay(100);
+}
+for(int i = ledpinNum - 1; i >= 0; i--){
+  digitalWrite(ledpins[i], LOW);
+  delay(100);
+}
+
+}
